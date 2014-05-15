@@ -46,22 +46,15 @@ public class SearchMapReduce {
 			NandanArrayWritable arrayWritable = new NandanArrayWritable(InventoryItemWritable.class);
 			ArrayList<InventoryItemWritable> inventoryItemWritablesArrayList = new ArrayList<InventoryItemWritable>();
 			
-			int k=0;
-
+			InventoryItemWritable value = null;
 			while (values.hasNext()) {
-				InventoryItemWritable value = values.next();
-				System.out.println("KKKKKKKKKKKOOOOOOOOOOOOOOOOOOOOOOOOOOOO:" + value);
-				inventoryItemWritablesArrayList.add(value);
- 				k++;
+				value = values.next();
+				inventoryItemWritablesArrayList.add(new InventoryItemWritable(value.getItemNumber(), 
+						value.getId(), value.getSequenceNumber(), value.getStatus()));
 			}
-			System.out.println("YIIII - 1" + inventoryItemWritablesArrayList.get(0));
-			System.out.println("YIIII - 2" + inventoryItemWritablesArrayList.get(1));
 			
 			InventoryItemWritable[] inventoryItemWritablesArray = new InventoryItemWritable[inventoryItemWritablesArrayList.size()];
-			for(int i=0; i < inventoryItemWritablesArray.length; i++) {
-				inventoryItemWritablesArray[i] = inventoryItemWritablesArrayList.get(i);
-			}	
-			arrayWritable.set(inventoryItemWritablesArray);
+			arrayWritable.set(inventoryItemWritablesArrayList.toArray(inventoryItemWritablesArray));
 			output.collect(key, arrayWritable);
 		}
 	}

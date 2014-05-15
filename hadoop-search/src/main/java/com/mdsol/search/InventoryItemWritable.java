@@ -21,6 +21,13 @@ public class InventoryItemWritable implements Writable {
     	this.sequenceNumber =  new IntWritable();   
     	this.status = new IntWritable(); 
     } 
+	
+	public InventoryItemWritable(Text itemNumber, IntWritable id, IntWritable sequenceNumber, IntWritable status) {
+    	this.itemNumber = itemNumber;
+    	this.id = id; 
+    	this.sequenceNumber =  sequenceNumber;   
+    	this.status = status; 
+    } 
     
 	public Text getItemNumber() {
 		return itemNumber;
