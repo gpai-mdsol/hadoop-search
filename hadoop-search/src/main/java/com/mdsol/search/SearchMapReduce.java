@@ -49,8 +49,8 @@ public class SearchMapReduce {
 			InventoryItemWritable value = null;
 			while (values.hasNext()) {
 				value = values.next();
-				inventoryItemWritablesArrayList.add(new InventoryItemWritable(value.getItemNumber(), 
-						value.getId(), value.getSequenceNumber(), value.getStatus()));
+				inventoryItemWritablesArrayList.add(new InventoryItemWritable(value.getItemNumber().toString(), 
+						value.getId().get(), value.getSequenceNumber().get(), value.getStatus().get()));
 			}
 			
 			InventoryItemWritable[] inventoryItemWritablesArray = new InventoryItemWritable[inventoryItemWritablesArrayList.size()];

@@ -22,11 +22,11 @@ public class InventoryItemWritable implements Writable {
     	this.status = new IntWritable(); 
     } 
 	
-	public InventoryItemWritable(Text itemNumber, IntWritable id, IntWritable sequenceNumber, IntWritable status) {
-    	this.itemNumber = itemNumber;
-    	this.id = id; 
-    	this.sequenceNumber =  sequenceNumber;   
-    	this.status = status; 
+	public InventoryItemWritable(String itemNumber, int id, int sequenceNumber, int status) {
+    	this.itemNumber = new Text(itemNumber);
+    	this.id = new IntWritable(id); 
+    	this.sequenceNumber =  new IntWritable(sequenceNumber);   
+    	this.status = new IntWritable(status); 
     } 
     
 	public Text getItemNumber() {
